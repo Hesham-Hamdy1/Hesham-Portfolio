@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hesham Hamdy Ramadan Mohamed | Portfolio</title>
+<style>
+:root {
+--bg: #0f172a;
+--panel: #111827;
+--soft: #1f2937;
+--card: rgba(255,255,255,0.04);
+--text: #e5e7eb;
+--muted: #94a3b8;
+--accent: #38bdf8;
+--border: rgba(255,255,255,0.08);
+--shadow: 0 10px 30px rgba(0,0,0,0.25);
+--radius: 22px;
+--max: 1100px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+margin: 0;
+font-family: Inter, Arial, sans-serif;
+background:
+  radial-gradient(circle at top left, rgba(56,189,248,0.15), transparent 30%),
+  radial-gradient(circle at top right, rgba(59,130,246,0.08), transparent 25%),
+  var(--bg);
+color: var(--text);
+line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+
+.container {
+width: min(92%, var(--max));
+margin: 0 auto;
+}
+
+.nav {
+position: sticky;
+top: 0;
+z-index: 20;
+backdrop-filter: blur(12px);
+background: rgba(15, 23, 42, 0.75);
+border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 16px 0;
+gap: 18px;
+}
+.brand { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px; }
+.brand span { color: var(--accent); }
+.nav-links {
+display: flex;
+gap: 18px;
+flex-wrap: wrap;
+font-size: 0.95rem;
+color: var(--muted);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+.hero { padding: 88px 0 48px; }
+.hero-grid {
+display: grid;
+grid-template-columns: 1.2fr 0.9fr;
+gap: 28px;
+align-items: center;
+}
+
+.badge {
+display: inline-flex;
+gap: 8px;
+align-items: center;
+padding: 8px 14px;
+border-radius: 999px;
+background: rgba(56,189,248,0.12);
+color: #c8f2ff;
+border: 1px solid rgba(56,189,248,0.24);
+font-size: 0.9rem;
+margin-bottom: 18px;
+}
+
+h1 {
+margin: 0 0 12px;
+font-size: clamp(2.2rem, 6vw, 4.2rem);
+line-height: 1.08;
+}
+.hero-role {
+color: var(--accent);
+font-size: 1.15rem;
+font-weight: 700;
+margin: 0 0 14px;
+}
+.hero p {
+color: var(--muted);
+font-size: 1.05rem;
+max-width: 650px;
+margin: 0 0 26px;
+}
+
+.actions {
+display: flex;
+gap: 14px;
+flex-wrap: wrap;
+margin-bottom: 22px;
+}
+
+.btn {
+border: none;
+padding: 12px 18px;
+border-radius: 14px;
+font-weight: 600;
+cursor: pointer;
+transition: 0.2s ease;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+}
+.btn-primary { background: var(--accent); color: #082032; }
+.btn-secondary {
+background: transparent;
+color: var(--text);
+border: 1px solid var(--border);
+}
+.btn-cv {
+background: rgba(56,189,248,0.12);
+color: #c8f2ff;
+border: 1px solid rgba(56,189,248,0.3);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-cv:hover { background: rgba(56,189,248,0.22); }
+
+.quick-info {
+display: flex;
+gap: 16px;
+flex-wrap: wrap;
+color: var(--muted);
+font-size: 0.95rem;
+}
+
+.hero-card,
+.card,
+.skill-category-card,
+.timeline-item,
+.contact-box {
+background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+border: 1px solid var(--border);
+box-shadow: var(--shadow);
+border-radius: var(--radius);
+}
+
+.hero-card { padding: 24px; }
+
+.profile-photo {
+width: 100%;
+max-width: 340px;
+height: 420px;
+object-fit: cover;
+object-position: center 24%;
+border-radius: 24px;
+display: block;
+margin: 0 auto 22px;
+border: 1px solid var(--border);
+box-shadow: var(--shadow);
+background: #0b1120;
+}
+
+.hero-card h3, .section-title { margin: 0 0 10px; font-size: 1.5rem; }
+.hero-card p, .section-subtitle, .card p { color: var(--muted); margin: 0 0 18px; }
+
+.mini-list { display: grid; gap: 12px; }
+.mini-item {
+background: var(--card);
+border: 1px solid var(--border);
+border-radius: 16px;
+padding: 14px;
+}
+
+.section { padding: 32px 0; scroll-margin-top: 96px; }
+.hero { scroll-margin-top: 96px; }
+.section-head { margin-bottom: 20px; }
+
+/* ── Skills ── */
+.skills-showcase {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 22px;
+align-items: stretch;
+}
+.skill-category-card { padding: 28px 26px; min-height: 100%; }
+.skill-category-header {
+display: flex;
+align-items: flex-start;
+gap: 14px;
+margin-bottom: 22px;
+}
+.skill-category-icon {
+color: var(--accent);
+font-size: 1.8rem;
+line-height: 1;
+min-width: 34px;
+display: flex;
+align-items: center;
+justify-content: center;
+padding-top: 2px;
+}
+.skill-category-title {
+margin: 0;
+color: var(--accent);
+font-size: 1.55rem;
+line-height: 1.35;
+}
+.skill-list {
+list-style: none;
+padding: 0;
+margin: 0;
+display: grid;
+gap: 14px;
+}
+.skill-list li {
+position: relative;
+padding-left: 22px;
+color: var(--text);
+font-size: 1rem;
+}
+.skill-list li::before {
+content: '▹';
+position: absolute;
+left: 0;
+top: 0;
+color: var(--accent);
+font-size: 0.95rem;
+font-weight: 700;
+}
+
+/* ── Timeline ── */
+.timeline { display: grid; gap: 18px; }
+.timeline-item {
+display: grid;
+grid-template-columns: 120px 1fr;
+gap: 16px;
+padding: 18px;
+}
+.timeline-year { color: var(--accent); font-weight: 700; }
+
+/* ── Cards ── */
+.cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.card { padding: 20px; }
+.project-status {
+display: inline-block;
+padding: 6px 10px;
+border-radius: 999px;
+font-size: 0.85rem;
+background: rgba(34,197,94,0.12);
+color: #bbf7d0;
+border: 1px solid rgba(34,197,94,0.25);
+margin-bottom: 10px;
+}
+
+/* ── Contact ── */
+.contact-box { text-align: center; padding: 26px; }
+.contact-links {
+display: flex;
+justify-content: center;
+gap: 14px;
+flex-wrap: wrap;
+margin-top: 18px;
+}
+
+.footer {
+padding: 28px 0 40px;
+text-align: center;
+color: var(--muted);
+font-size: 0.92rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+.skills-showcase { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+.hero-grid, .skills-showcase { grid-template-columns: 1fr; }
+.timeline-item { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+.nav-inner { flex-direction: column; align-items: flex-start; }
+.hero { padding-top: 62px; }
+.hero-card, .card, .timeline-item, .contact-box, .skill-category-card { padding: 18px; }
+.profile-photo { max-width: 100%; height: 360px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="brand">Hesham <span>Hamdy</span></div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge">Available for internships and junior opportunities</div>
+      <h1>Hesham Hamdy Ramadan Mohamed</h1>
+      <div class="hero-role">Software Engineer • Flutter Developer</div>
+      <p>
+        Third-year Computer Science student interested in mobile app development using Flutter and Dart.
+        I am currently building strong fundamentals, improving my problem-solving skills, and working on real Flutter projects.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn btn-cv" href="Hesham Hamdy CV.pdf" download="Hesham Hamdy CV.pdf">
+          ⬇ Download CV
+        </a>
+        <a class="btn btn-secondary" href="#contact">Contact Me</a>
+      </div>
+      <div class="quick-info">
+        <span>📍 Beni Suef</span>
+        <span>💼 Software Engineer</span>
+        <span>📱 Flutter Developer</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <img class="profile-photo" src="profile.jpg" alt="Hesham Hamdy Ramadan Mohamed" />
+      <h3>Current Focus</h3>
+      <p>I am currently building clean and responsive mobile apps and preparing a strong portfolio for internships.</p>
+      <div class="mini-list">
+        <div class="mini-item">
+          <strong>Learning</strong>
+          <div>Dart, Flutter, GitHub, UI building, REST API basics</div>
+        </div>
+        <div class="mini-item">
+          <strong>Goal</strong>
+          <div>Build Professional Flutter projects and apply for internships</div>
+        </div>
+        <div class="mini-item">
+          <strong>Status</strong>
+          <div>Portfolio version 1 — ready to grow over time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">A brief overview of my background, interests, and current learning path.</p>
+    </div>
+    <div class="card">
+      <p>
+        Motivated Computer Science student at Beni Suef National University, Faculty of Computers and Artificial Intelligence (2023–2027, B+ grade),
+        with a passion for software engineering and building innovative solutions.
+        Experienced in developing academic and personal projects, solving problems, and working effectively in team environments.
+        Eager to contribute technical skills, learn from real-world experience, and grow as a professional software engineer.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">Real-world experience and internships.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2026<br><span style="font-size:0.8rem;color:var(--muted);font-weight:400;">Present</span></div>
+        <div>
+          <h3 style="margin:0 0 4px;">Flutter Developer Trainee</h3>
+          <p style="color:var(--accent);font-size:0.9rem;margin:0 0 10px;">National Telecommunications Institute (NTI) · Internship</p>
+
+<p style="color:var(--accent);font-size:0.9rem;margin:0 0 10px;">March 2026 – Present</p>
+
+          <ul style="color:var(--muted);padding-left:18px;margin:0;line-height:1.8;">
+            <li>Participating in a government-sponsored Flutter mobile development program at NTI.</li>
+            <li>Building and enhancing Flutter applications as part of hands-on training tasks.</li>
+            <li>Applying MVVM architecture, Firebase integration, and best practices in real projects.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="education">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Education</h2>
+      <p class="section-subtitle">Academic background and university studies.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2023<br><span style="font-size:0.8rem;color:var(--muted);font-weight:400;">2027</span></div>
+        <div>
+          <h3 style="margin:0 0 4px;">Beni Suef National University</h3>
+          <p style="color:var(--accent);font-size:0.9rem;margin:0 0 8px;">Faculty of Computer and Information Sciences</p>
+          <p style="color:var(--muted);margin:0;">Major in Artificial Intelligence and Data Science &nbsp;·&nbsp; Grade: <strong style="color:var(--text);">B+</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-subtitle">A categorized view of the technologies and tools I work with.</p>
+    </div>
+    <div class="skills-showcase">
+
+      <!-- Core -->
+      <div class="skill-category-card">
+        <div class="skill-category-header">
+          <div class="skill-category-icon">&lt;/&gt;</div>
+          <h3 class="skill-category-title">Core Languages &amp;<br>Frameworks</h3>
+        </div>
+        <ul class="skill-list">
+          <li>Dart</li>
+          <li>Flutter</li>
+          <li>OOP</li>
+          <li>Problem Solving</li>
+        </ul>
+      </div>
+
+      <!-- Architecture -->
+      <div class="skill-category-card">
+        <div class="skill-category-header">
+          <div class="skill-category-icon">◫</div>
+          <h3 class="skill-category-title">Architecture &amp;<br>Patterns</h3>
+        </div>
+        <ul class="skill-list">
+          <li>SOLID</li>
+          <li>MVVM</li>
+          <li>Figma to Flutter</li>
+        </ul>
+      </div>
+
+      <!-- Backend & Data -->
+      <div class="skill-category-card">
+        <div class="skill-category-header">
+          <div class="skill-category-icon">◉</div>
+          <h3 class="skill-category-title">Backend &amp;<br>Services</h3>
+        </div>
+        <ul class="skill-list">
+          <li>Firebase</li>
+          <li>Git</li>
+          <li>GitHub</li>
+        </ul>
+      </div>
+
+      <!-- AI & Prompting -->
+      <div class="skill-category-card">
+        <div class="skill-category-header">
+          <div class="skill-category-icon">🤖</div>
+          <h3 class="skill-category-title">AI &amp;<br>Prompting</h3>
+        </div>
+        <ul class="skill-list">
+          <li>Prompt Engineering</li>
+          <li>Accurate Prompting</li>
+          <li>Large Language Models (LLM)</li>
+          <li>Generative AI</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="softskills">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Soft Skills</h2>
+      <p class="section-subtitle">Personal qualities that complement my technical abilities.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;">
+      <span class="badge">🤝 Teamwork</span>
+      <span class="badge">💬 Communication</span>
+      <span class="badge">🧩 Adaptability</span>
+      <span class="badge">💡 Creative Thinking</span>
+      <span class="badge">🎯 Leadership</span>
+      <span class="badge">⏰ Time Management</span>
+      <span class="badge">👂 Listening</span>
+      <span class="badge">💪 Work Ethic</span>
+      <span class="badge">🌟 Positivity</span>
+      <span class="badge">⚖️ Compromise</span>
+      <span class="badge">✅ Dependability</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="certificates">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Certificates &amp; Training</h2>
+      <p class="section-subtitle">Certificates and training that reflect my learning journey.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div>
+          <h3>Sprints × Microsoft Summer Camp</h3>
+          <p>Mobile Development training focused on fundamentals and hands-on learning.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2026</div>
+        <div>
+          <h3>The Complete Flutter Development Guide</h3>
+          <p>Udemy certificate covering Flutter development fundamentals and mobile app building basics.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2026</div>
+        <div>
+          <h3>Million Prompters Completion Certificate</h3>
+          <p>Dubai Future Foundation — AI prompting and generative AI fundamentals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">Selected projects and areas I am currently building and improving.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="project-status">Personal Project</div>
+        <h2>Financi UI</h2>
+        <h3 style="color: var(--accent); font-size: 18px;">
+  Financial Mobile UI
+</h3>
+        <p>A modern financial mobile UI simulating a clean and intuitive digital banking experience.</p>
+        <ul style="color:var(--muted); padding-left:18px; margin:0 0 12px;">
+          <li>Authentication flow: login, OTP verification, reset password</li>
+          <li>Dashboard with financial statistics and card management</li>
+          <li>Responsive layouts with Flutter ScreenUtil &amp; GoRouter navigation</li>
+          <li>pin_code_fields, carousel_slider, fl_chart packages</li>
+        </ul>
+        <p><strong>Tech:</strong> Flutter, Dart</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <h2 class="section-title">Contact Me</h2>
+      <p class="section-subtitle">Get in touch through the links below.</p>
+      <div class="contact-links">
+        <a class="btn btn-secondary" href="mailto:Heshamfpldk090@gmail.com">Email</a>
+        <a class="btn btn-secondary" href="https://github.com/Hesham-Hamdy1" target="_blank">GitHub</a>
+        <a class="btn btn-secondary" href="https://www.linkedin.com/in/hesham-hamdy1/" target="_blank">LinkedIn</a>
+        <a class="btn btn-secondary" href="tel:+201208001682">+201208001682</a>
+        <a class="btn btn-secondary" href="tel:+201018933440">+201018933440</a>
+        <a class="btn btn-cv" href="Hesham Hamdy CV.pdf" download="Hesham Hamdy CV.pdf">⬇ Download CV</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">Built with HTML &amp; CSS</div>
+</footer>
+
+<script>
+const links = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section, header');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 120;
+    const height = section.offsetHeight;
+    if (scrollY >= top && scrollY < top + height) {
+      current = section.getAttribute('id');
+    }
+  });
+  links.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
